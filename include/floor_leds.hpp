@@ -6,11 +6,11 @@
 // #define ESP_FLOOR_1
 // #define ESP_FLOOR_2
 // #define ESP_FLOOR_3
-#define ESP_FLOOR_4
+// #define ESP_FLOOR_4
 // #define ESP_FLOOR_5
 // #define ESP_FLOOR_6
 // #define ESP_FLOOR_7
-// #define ESP_FLOOR_8
+#define ESP_FLOOR_8
 
 // A struct to represent a
 class RoomLed {
@@ -129,10 +129,10 @@ std::array<RoomLed*, NUMBER_OF_ROOMS_ON_FLOOR> floorLeds {
   &room701, &room702, &room703, &room704, &room705, &room706
 };
 #elif defined(ESP_FLOOR_8)
-RoomLed room801{static_cast<String>("801"), ledGPIO16};
-RoomLed room802{static_cast<String>("802"), ledGPIO5};
-RoomLed room803{static_cast<String>("803"), ledGPIO4};
-RoomLed room804{static_cast<String>("804"), ledGPIO2};
+RoomLed room801{static_cast<String>("pha"), ledGPIO16};
+RoomLed room802{static_cast<String>("phb"), ledGPIO5};
+RoomLed room803{static_cast<String>("phc"), ledGPIO4};
+RoomLed room804{static_cast<String>("phd"), ledGPIO2};
 
 const size_t NUMBER_OF_ROOMS_ON_FLOOR = 4;
 std::array<RoomLed*, NUMBER_OF_ROOMS_ON_FLOOR> floorLeds {
