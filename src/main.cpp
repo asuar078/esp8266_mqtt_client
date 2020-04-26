@@ -49,6 +49,7 @@ void setup_wifi() {
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(ssid);
+  WiFi.mode(WIFI_STA); // need to be here for multiple connections to broker
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
@@ -156,13 +157,16 @@ void reconnect() {
       // Subscribe or resubscribe to a topic
       // You can subscribe to more topics (to control more LEDs in this example)
       client.subscribe(MQTT_TOPIC_SUB);
+      #ifdef ESP_FLOOR_2
+      client.subscribe("floor/1");
+      #endif
 
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
-      Serial.println(" try again in 5 seconds");
-      // Wait 5 seconds before retrying
-      delay(5000);
+      Serial.println(" try again in 15 seconds");
+      // Wait 15 seconds before retrying
+      delay(15000);
     }
   }
 }
@@ -179,11 +183,12 @@ void setup() {
 
   Serial.begin(115200);
   setup_wifi();
+  Serial.print("mqtt client: "); Serial.println(MQTT_CLIENT_NAME);
+  Serial.print("topic: "); Serial.println(MQTT_TOPIC_SUB);
+
   client.setServer(MQTT_SERVER, MQTT_PORT);
   client.setCallback(callback);
 
-  Serial.print("mqtt client: "); Serial.println(MQTT_CLIENT_NAME);
-  Serial.print("topic: "); Serial.println(MQTT_TOPIC_SUB);
 }
 
 // For this project, you don't need to change anything in the loop function.

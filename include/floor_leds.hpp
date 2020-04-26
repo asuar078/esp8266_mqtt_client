@@ -58,10 +58,11 @@ RoomLed room202{static_cast<String>("202"), ledGPIO5};
 RoomLed room203{static_cast<String>("203"), ledGPIO4};
 RoomLed roomFitness{static_cast<String>("fitness"), ledGPIO2};
 RoomLed roomLobby{static_cast<String>("lobby"), ledGPIO14};
+RoomLed roomGround{static_cast<String>("ground"), ledGPIO12};
 
-const size_t NUMBER_OF_ROOMS_ON_FLOOR = 5;
+const size_t NUMBER_OF_ROOMS_ON_FLOOR = 6;
 std::array<RoomLed*, NUMBER_OF_ROOMS_ON_FLOOR> floorLeds {
-  &room201, &room202, &room203, &roomFitness, &roomLobby
+  &room201, &room202, &room203, &roomFitness, &roomLobby, &roomGround
 };
 
 #elif defined(ESP_FLOOR_3)
