@@ -179,7 +179,14 @@ void setup() {
   // set all led pins to output mode and off
   for (auto room : floorLeds) {
     room->begin();
+    room->off();
   }
+
+  // for (auto room : floorLeds) {
+  //   room->on();
+  //   delay(2000);
+  //   room->off();
+  // }
 
   Serial.begin(115200);
   setup_wifi();
